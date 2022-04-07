@@ -1,0 +1,13 @@
+name: Dispatch
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -X POST -H "Authorization: token ${{ secrets.AUTO_PR_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" -d '{"event_type": "update-submodule"}' -i  https://api.github.com/repos/nyuta1212/n-yuta/dispatches
+
